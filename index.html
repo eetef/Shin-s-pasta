@@ -3,97 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="West city's finest">
+<meta name="keywords" content="dragon ball restaurant">
 <title>Shin's Pasta | West City</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { font-family:'Inter', sans-serif; color:#e8e8ea; background:#0a0a0e; overflow-x:hidden; }
-  h1,h2,h3 { font-family:'Bebas Neue', sans-serif; letter-spacing:1.5px; }
+  body { font-family:'Inter', sans-serif; color:#e8dde3; background:#1a1218; overflow-x:hidden; }
+  h1,h2,h3 { font-family:'Baloo 2', sans-serif; }
 
-  nav { position:fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:20px 40px; background:rgba(8,8,12,0.9); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,140,40,0.15); z-index:100; }
-  nav .logo { color:#ff8c28; font-family:'Bebas Neue',sans-serif; font-size:1.6rem; letter-spacing:2px; }
-  nav ul { list-style:none; display:flex; gap:28px; }
-  nav a { color:#ccc; text-decoration:none; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; transition:color 0.25s; }
-  nav a:hover { color:#ff8c28; }
+  nav { position:fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:16px 24px; background:rgba(26,18,24,0.92); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,140,190,0.15); z-index:100; }
+  nav .logo { color:#e88fb8; font-family:'Baloo 2',sans-serif; font-weight:800; font-size:1.3rem; }
+  nav ul { list-style:none; display:flex; gap:24px; }
+  nav a { color:#c9b3c0; text-decoration:none; font-size:0.88rem; font-weight:600; }
+  nav a:hover { color:#e88fb8; }
+  .menu-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; }
+  .menu-toggle span { width:22px; height:2px; background:#e88fb8; border-radius:2px; }
+  nav ul.open { display:flex; }
 
-  .hero { height:100vh; position:relative; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:0 20px; overflow:hidden; background:#0a0a0e; }
-  .grid-bg { position:absolute; inset:0; background-image:linear-gradient(rgba(255,140,40,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,140,40,0.06) 1px,transparent 1px); background-size:44px 44px; mask-image:radial-gradient(ellipse 60% 50% at 50% 40%, black 40%, transparent 100%); }
-  .burst { position:absolute; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle, rgba(255,140,40,0.18), transparent 70%); animation:pulse 4s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{ transform:scale(1); opacity:0.7; } 50%{ transform:scale(1.15); opacity:1; } }
-  .hero .tag { color:#ff8c28; text-transform:uppercase; letter-spacing:4px; font-size:0.8rem; font-weight:600; margin-bottom:16px; position:relative; z-index:2; opacity:0; animation:fadeUp 0.8s ease forwards 0.1s; }
-  .hero h1 { font-size:5rem; color:#fff; position:relative; z-index:2; opacity:0; animation:fadeUp 0.8s ease forwards 0.3s; text-shadow:0 0 40px rgba(255,140,40,0.5); }
-  .hero p { font-size:1.1rem; color:#999; max-width:520px; margin:16px 0 34px; position:relative; z-index:2; opacity:0; animation:fadeUp 0.8s ease forwards 0.5s; }
-  @keyframes fadeUp { from{ opacity:0; transform:translateY(24px); } to{ opacity:1; transform:translateY(0); } }
-  .btn { background:#ff8c28; color:#0a0a0e; padding:15px 40px; border:none; border-radius:2px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; font-size:0.85rem; text-decoration:none; display:inline-block; position:relative; z-index:2; transition:all 0.3s; clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%); }
-  .btn:hover { background:#ffa652; transform:translateY(-2px); }
+  .hero { min-height:100svh; position:relative; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:110px 20px 50px; overflow:hidden; background:#1a1218; }
+  .glow { position:absolute; border-radius:50%; filter:blur(70px); opacity:0.28; }
+  .glow1 { width:340px; height:340px; background:#e88fb8; top:-80px; left:-80px; }
+  .glow2 { width:280px; height:280px; background:#a15a8a; bottom:-60px; right:-60px; }
+  .hero .tag { color:#e88fb8; text-transform:uppercase; letter-spacing:3px; font-size:0.75rem; font-weight:700; margin-bottom:14px; position:relative; z-index:2; }
+  .hero h1 { font-size:clamp(2.4rem,8vw,4.2rem); color:#f3d7e6; position:relative; z-index:2; font-weight:800; }
+  .hero p { font-size:1rem; color:#b39cae; max-width:480px; margin:16px 0 28px; position:relative; z-index:2; }
+  .btn { background:#c65f95; color:#fff; padding:14px 34px; border:none; border-radius:50px; font-weight:700; font-size:0.92rem; text-decoration:none; display:inline-block; position:relative; z-index:2; box-shadow:0 8px 24px rgba(198,95,149,0.25); }
+  .btn:active { transform:scale(0.98); }
 
-  section { padding:100px 40px; max-width:1150px; margin:0 auto; }
-  .eyebrow { color:#ff8c28; text-transform:uppercase; letter-spacing:3px; font-size:0.75rem; font-weight:600; display:block; margin-bottom:10px; }
+  section { padding:70px 24px; max-width:1150px; margin:0 auto; }
+  .eyebrow { color:#e88fb8; text-transform:uppercase; letter-spacing:2px; font-size:0.72rem; font-weight:700; display:block; margin-bottom:10px; }
 
-  .about { display:flex; gap:60px; align-items:flex-start; flex-wrap:wrap; }
-  .about > div:first-child { flex:1; min-width:280px; }
-  .about h2 { font-size:2.6rem; color:#fff; margin-bottom:16px; }
-  .about p { color:#aaa; line-height:1.7; }
+  .about { display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap; }
+  .about > div:first-child { flex:1; min-width:260px; }
+  .about h2 { font-size:2rem; color:#f3d7e6; margin-bottom:12px; }
+  .about p { color:#b39cae; line-height:1.7; font-size:0.95rem; }
 
-  .staff { flex:1.4; min-width:320px; display:grid; gap:20px; }
-  .staff-card { background:#131318; border:1px solid rgba(255,140,40,0.15); border-radius:4px; padding:24px; }
-  .staff-card .top { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
-  .staff-card .badge { width:48px; height:48px; border-radius:4px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; color:#0a0a0e; }
-  .staff-card h3 { font-size:1.3rem; color:#fff; }
-  .staff-card p { font-size:0.88rem; color:#999; line-height:1.65; }
+  .staff { flex:1.3; min-width:280px; display:grid; gap:14px; }
+  .staff-card { background:#241a21; border:1px solid rgba(255,140,190,0.12); border-radius:14px; padding:20px; }
+  .staff-card .top { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .staff-card .badge { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1rem; color:#1a1218; background:#e88fb8; flex-shrink:0; }
+  .staff-card h3 { font-size:1.1rem; color:#f3d7e6; }
+  .staff-card p { font-size:0.85rem; color:#b39cae; line-height:1.65; }
 
-  .menu h2 { text-align:center; font-size:2.8rem; color:#fff; margin-bottom:6px; }
+  .menu h2 { text-align:center; font-size:2.2rem; color:#f3d7e6; margin-bottom:4px; }
   .menu .eyebrow { text-align:center; }
-  .menu-section { margin-top:44px; }
-  .menu-section h3 { color:#ff8c28; font-size:1.2rem; margin-bottom:16px; text-transform:uppercase; letter-spacing:1px; font-family:'Inter',sans-serif; font-weight:700; }
-  .menu-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
-  .menu-item { background:#131318; border:1px solid rgba(255,255,255,0.06); border-radius:4px; padding:18px 20px; transition:border-color 0.25s; }
-  .menu-item:hover { border-color:rgba(255,140,40,0.4); }
-  .menu-item h4 { display:flex; justify-content:space-between; font-weight:600; font-size:0.95rem; color:#eee; }
-  .menu-item h4 span { color:#ff8c28; }
-  .menu-item p { font-size:0.82rem; color:#888; margin-top:6px; }
+  .menu-section { margin-top:34px; }
+  .menu-section h3 { color:#e88fb8; font-size:1.05rem; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px; font-family:'Inter',sans-serif; font-weight:700; }
+  .menu-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+  .menu-item { background:#241a21; border:1px solid rgba(255,255,255,0.05); border-radius:12px; padding:16px 18px; }
+  .menu-item h4 { display:flex; justify-content:space-between; gap:10px; font-weight:700; font-size:0.92rem; color:#e8dde3; }
+  .menu-item h4 span { color:#e88fb8; white-space:nowrap; }
+  .menu-item p { font-size:0.8rem; color:#9c8595; margin-top:6px; }
 
-  .reviews h2 { text-align:center; font-size:2.8rem; color:#fff; }
-  .review-summary { text-align:center; margin:8px 0 44px; }
-  .review-summary .score { font-size:2.6rem; font-family:'Bebas Neue',sans-serif; color:#ff8c28; }
-  .review-summary .count { color:#888; font-size:0.85rem; }
-  .r-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:16px; }
-  .r-card { background:#131318; border:1px solid rgba(255,255,255,0.06); border-radius:4px; padding:20px; transition:border-color 0.25s; }
-  .r-card:hover { border-color:rgba(255,140,40,0.35); }
-  .r-card .top { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
-  .r-card .pfp { width:38px; height:38px; border-radius:4px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; flex-shrink:0; }
-  .r-card .who { font-weight:600; color:#eee; font-size:0.92rem; }
-  .r-card .stars-sm { color:#ff8c28; font-size:0.8rem; }
-  .r-card p { font-size:0.87rem; color:#999; font-style:italic; line-height:1.55; }
-  .r-card .translation { font-size:0.75rem; color:#777; font-style:normal; margin-top:8px; }
+  .reviews { background:#201620; border-radius:20px; }
+  .reviews h2 { text-align:center; font-size:2.2rem; color:#f3d7e6; }
+  .review-summary { text-align:center; margin:8px 0 34px; }
+  .review-summary .score { font-size:2.1rem; font-family:'Baloo 2',sans-serif; color:#e88fb8; font-weight:800; }
+  .review-summary .count { color:#9c8595; font-size:0.8rem; }
+  .r-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; }
+  .r-card { background:#241a21; border:1px solid rgba(255,255,255,0.05); border-radius:14px; padding:18px; }
+  .r-card .top { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  .r-card .pfp { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8rem; flex-shrink:0; color:#1a1218; }
+  .r-card .who { font-weight:700; color:#e8dde3; font-size:0.88rem; }
+  .r-card .stars-sm { color:#e88fb8; font-size:0.78rem; }
+  .r-card p { font-size:0.85rem; color:#b39cae; font-style:italic; line-height:1.55; }
+  .r-card .translation { font-size:0.72rem; color:#8a7484; font-style:normal; margin-top:8px; }
 
-  .visit { text-align:center; background:#131318; border:1px solid rgba(255,140,40,0.15); border-radius:4px; }
-  .visit h2 { font-size:2.4rem; color:#fff; margin-bottom:16px; }
-  .visit p { color:#999; margin-bottom:6px; }
+  .visit { text-align:center; background:#241a21; border-radius:20px; border:1px solid rgba(255,140,190,0.12); }
+  .visit h2 { font-size:1.9rem; color:#f3d7e6; margin-bottom:14px; }
+  .visit p { color:#b39cae; margin-bottom:6px; font-size:0.9rem; }
 
-  footer { text-align:center; padding:34px; color:#555; font-size:0.8rem; border-top:1px solid rgba(255,255,255,0.06); }
+  footer { text-align:center; padding:28px; color:#6e5c69; font-size:0.8rem; }
 
-  @media(max-width:768px){ nav ul{display:none;} .hero h1{font-size:3rem;} section{padding:70px 20px;} }
+  @media(max-width:768px){
+    .menu-toggle { display:flex; }
+    nav ul { display:none; position:absolute; top:100%; left:0; width:100%; background:#1a1218; flex-direction:column; padding:16px 24px; gap:16px; border-bottom:1px solid rgba(255,140,190,0.15); }
+    section { padding:50px 20px; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">SHIN'S PASTA</div>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#visit">Visit</a></li>
-  </ul>
+  <div class="logo">Shin's Pasta</div>
+  <ul id="navLinks"><li><a href="#about">About</a></li><li><a href="#menu">Menu</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#visit">Visit</a></li></ul>
+  <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="hero">
-  <div class="grid-bg"></div>
-  <div class="burst"></div>
+  <div class="glow glow1"></div><div class="glow glow2"></div>
   <span class="tag">West City · Est. Universe 7</span>
-  <h1>SHIN'S PASTA</h1>
+  <h1>Shin's Pasta</h1>
   <p>Pasta, burgers, and steaks worth powering up for. No shortcuts, no energy blasts in the kitchen.</p>
   <a href="#menu" class="btn">View menu</a>
 </div>
@@ -106,11 +108,11 @@
   </div>
   <div class="staff">
     <div class="staff-card">
-      <div class="top"><div class="badge" style="background:#ffd166;">S</div><h3>Shin</h3></div>
+      <div class="top"><div class="badge">S</div><h3>Shin</h3></div>
       <p>Shin was once the weakest of the five Supreme Kais. He was also the only one who survived Majin Buu's rampage while the other four were killed or absorbed. He tried to stop Buu himself and couldn't. He needed Goku and the others to finish what he started. After the dust settled, Shin realized guarding the universe wasn't a job he could carry alone or take credit for. He stepped back from being a symbol of power he never really had. He poured that same effort into something he could actually be great at. Shin's Pasta is his attempt to build something real, one plate at a time, on his way to making it the best restaurant in Universe 7.</p>
     </div>
     <div class="staff-card">
-      <div class="top"><div class="badge" style="background:#8ecae6;">K</div><h3>Kibito</h3></div>
+      <div class="top"><div class="badge">K</div><h3>Kibito</h3></div>
       <p>Long before he was known simply as Shin's attendant, Kibito was a capable Supreme Kai aide in his own right. He was skilled in Kai Kai teleportation and healing techniques few others ever mastered. When the other Supreme Kais were killed by Majin Buu, Kibito lost the wider circle he once served. He became Shin's sole bodyguard and closest companion by necessity, not just title. He carried that loyalty into the kitchen. He may not draw the same attention as the CEO. But every dish that leaves this kitchen has his exact, healer's precision behind it.</p>
     </div>
   </div>
@@ -120,121 +122,157 @@
   <span class="eyebrow">West City · Near the Meta House</span>
   <h2>The Menu</h2>
 
-  <div class="menu-section">
-    <h3>Pasta</h3>
-    <div class="menu-grid">
-      <div class="menu-item"><h4>Spaghetti Aglio e Olio <span>$14</span></h4><p>Garlic, olive oil, chili flake, parmesan</p></div>
-      <div class="menu-item"><h4>Fettuccine Alfredo <span>$16</span></h4><p>Creamy parmesan sauce, cracked black pepper</p></div>
-      <div class="menu-item"><h4>Pasta alla Rosa <span>$17</span></h4><p>Tomato cream sauce, chili, basil</p></div>
-      <div class="menu-item"><h4>Cacio e Pepe <span>$15</span></h4><p>Pecorino, black pepper, house pasta water emulsion</p></div>
-      <div class="menu-item"><h4>Bolognese <span>$18</span></h4><p>Slow-simmered beef ragu, pappardelle</p></div>
-      <div class="menu-item"><h4>Pesto Genovese <span>$15</span></h4><p>Basil, pine nut, garlic, parmesan</p></div>
-    </div>
-  </div>
+  <div class="menu-section"><h3>Pasta</h3><div class="menu-grid">
+    <div class="menu-item"><h4>Spaghetti Aglio e Olio <span>$14</span></h4><p>Garlic, olive oil, chili flake, parmesan</p></div>
+    <div class="menu-item"><h4>Fettuccine Alfredo <span>$16</span></h4><p>Creamy parmesan sauce, cracked black pepper</p></div>
+    <div class="menu-item"><h4>Pasta alla Rosa <span>$17</span></h4><p>Tomato cream sauce, chili, basil</p></div>
+    <div class="menu-item"><h4>Cacio e Pepe <span>$15</span></h4><p>Pecorino, black pepper, house pasta water emulsion</p></div>
+    <div class="menu-item"><h4>Bolognese <span>$18</span></h4><p>Slow-simmered beef ragu, pappardelle</p></div>
+    <div class="menu-item"><h4>Pesto Genovese <span>$15</span></h4><p>Basil, pine nut, garlic, parmesan</p></div>
+    <div class="menu-item"><h4>Demon Realm Red Pasta <span>$18</span></h4><p>Spicy nduja, calabrian chili, aged pecorino</p></div>
+    <div class="menu-item"><h4>Yardrat Miso Linguine <span>$17</span></h4><p>White miso cream, scallion, toasted sesame</p></div>
+    <div class="menu-item"><h4>Porunga's Three-Wish Ravioli <span>$20</span></h4><p>Three ravioli fillings on one plate: mushroom, ricotta, and beef</p></div>
+    <div class="menu-item"><h4>Tsufurujin Truffle Tagliatelle <span>$22</span></h4><p>Black truffle cream, wild mushroom, parmesan crisp</p></div>
+    <div class="menu-item"><h4>Makai Squid Ink Linguine <span>$21</span></h4><p>Squid ink pasta, chili, garlic, dark and a little dangerous</p></div>
+    <div class="menu-item"><h4>Konats Coconut Curry Noodles <span>$18</span></h4><p>Coconut curry broth, rice noodles, fresh herbs</p></div>
+    <div class="menu-item"><h4>New Namek Green Gnocchi <span>$19</span></h4><p>Spinach gnocchi, brown butter sage, parmesan</p></div>
+    <div class="menu-item"><h4>Ajisa Tree Pesto Pasta <span>$18</span></h4><p>Wild herb pesto, pine nut, extra green</p></div>
+  </div></div>
 
-  <div class="menu-section">
-    <h3>Burgers & Fries</h3>
-    <div class="menu-grid">
-      <div class="menu-item"><h4>Kai Classic Burger <span>$13</span></h4><p>Beef patty, cheddar, house sauce, brioche bun</p></div>
-      <div class="menu-item"><h4>Namekian Green Burger <span>$14</span></h4><p>Avocado, arugula, herb aioli</p></div>
-      <div class="menu-item"><h4>Fries <span>$5</span></h4><p>Crispy, salted, sold separately or with any meal</p></div>
-      <div class="menu-item"><h4>Burger + Fries Meal <span>$17</span></h4><p>Any burger paired with a side of fries</p></div>
-    </div>
-  </div>
+  <div class="menu-section"><h3>Burgers & Fries</h3><div class="menu-grid">
+    <div class="menu-item"><h4>Kai Classic Burger <span>$13</span></h4><p>Beef patty, cheddar, house sauce, brioche bun</p></div>
+    <div class="menu-item"><h4>Namekian Green Burger <span>$14</span></h4><p>Avocado, arugula, herb aioli</p></div>
+    <div class="menu-item"><h4>Fries <span>$5</span></h4><p>Crispy, salted, sold separately or with any meal</p></div>
+    <div class="menu-item"><h4>Burger + Fries Meal <span>$17</span></h4><p>Any burger paired with a side of fries</p></div>
+  </div></div>
 
-  <div class="menu-section">
-    <h3>Steaks</h3>
-    <div class="menu-grid">
-      <div class="menu-item"><h4>Ribeye "Fusion Cut" <span>$34</span></h4><p>Herb butter, roasted garlic, grilled to order</p></div>
-      <div class="menu-item"><h4>Filet Mignon <span>$38</span></h4><p>Herb butter reduction, mashed potato</p></div>
-      <div class="menu-item"><h4>Sirloin Steak <span>$26</span></h4><p>Chimichurri, grilled vegetables</p></div>
-    </div>
-  </div>
+  <div class="menu-section"><h3>Steaks</h3><div class="menu-grid">
+    <div class="menu-item"><h4>Ribeye "Fusion Cut" <span>$34</span></h4><p>Herb butter, roasted garlic, grilled to order</p></div>
+    <div class="menu-item"><h4>Filet Mignon <span>$38</span></h4><p>Herb butter reduction, mashed potato</p></div>
+    <div class="menu-item"><h4>Sirloin Steak <span>$26</span></h4><p>Chimichurri, grilled vegetables</p></div>
+    <div class="menu-item"><h4>Tritekian Tomahawk <span>$54</span></h4><p>Dry-aged, smoked salt crust, serves two</p></div>
+    <div class="menu-item"><h4>Taiyoken Blackened Steak <span>$36</span></h4><p>Blackened crust, bright citrus salsa</p></div>
+    <div class="menu-item"><h4>Kanassa Blackened Ribeye <span>$36</span></h4><p>Psychic-sharp spice rub, char-grilled, smoked salt</p></div>
+    <div class="menu-item"><h4>Suiken Braised Short Rib <span>$32</span></h4><p>Red wine-braised, slow and staggering tender</p></div>
+  </div></div>
 
-  <div class="menu-section">
-    <h3>Teriyaki</h3>
-    <div class="menu-grid">
-      <div class="menu-item"><h4>Teriyaki Chicken Bowl <span>$15</span></h4><p>Steamed rice, sesame, scallion</p></div>
-      <div class="menu-item"><h4>Teriyaki Salmon <span>$19</span></h4><p>Glazed salmon, stir-fried vegetables</p></div>
-    </div>
-  </div>
+  <div class="menu-section"><h3>Teriyaki</h3><div class="menu-grid">
+    <div class="menu-item"><h4>Teriyaki Chicken Bowl <span>$15</span></h4><p>Steamed rice, sesame, scallion</p></div>
+    <div class="menu-item"><h4>Teriyaki Salmon <span>$19</span></h4><p>Glazed salmon, stir-fried vegetables</p></div>
+  </div></div>
 
-  <div class="menu-section">
-    <h3>Appetizers</h3>
-    <div class="menu-grid">
-      <div class="menu-item"><h4>Senzu Bean Dip <span>$9</span></h4><p>Warm white bean puree, crostini, olive oil</p></div>
-      <div class="menu-item"><h4>Scouter Calamari <span>$12</span></h4><p>Crispy fried squid, spicy dip, lemon</p></div>
-      <div class="menu-item"><h4>Capsule Corn Bites <span>$8</span></h4><p>Sweet corn fritters, chili mayo</p></div>
-    </div>
-  </div>
+  <div class="menu-section"><h3>Appetizers</h3><div class="menu-grid">
+    <div class="menu-item"><h4>Senzu Bean Dip <span>$9</span></h4><p>Warm white bean puree, crostini, olive oil</p></div>
+    <div class="menu-item"><h4>Scouter Calamari <span>$12</span></h4><p>Crispy fried squid, spicy dip, lemon</p></div>
+    <div class="menu-item"><h4>Capsule Corn Bites <span>$8</span></h4><p>Sweet corn fritters, chili mayo</p></div>
+    <div class="menu-item"><h4>Bukujutsu Sky Rolls <span>$11</span></h4><p>Light, airy tempura vegetable rolls, ponzu dip</p></div>
+    <div class="menu-item"><h4>Kienzan Onion Rings <span>$8</span></h4><p>Thin-cut, disc-shaped, stacked and crisp-fried</p></div>
+    <div class="menu-item"><h4>Shunkan Idō Express Plate <span>$12</span></h4><p>Chef's fastest-fired small bites, out in minutes</p></div>
+    <div class="menu-item"><h4>Makankosappo Skewers <span>$13</span></h4><p>Charred beef skewers, precision-grilled, sharp chili glaze</p></div>
+    <div class="menu-item"><h4>Enma Station Dumplings <span>$10</span></h4><p>Steamed pork dumplings, soy-vinegar dip</p></div>
+  </div></div>
 
-  <div class="menu-section">
-    <h3>Cold Appetizers</h3>
-    <div class="menu-grid">
-      <div class="menu-item"><h4>Frost Demon Ceviche <span>$13</span></h4><p>Citrus-cured white fish, red onion, cilantro</p></div>
-      <div class="menu-item"><h4>Ice Realm Caprese <span>$10</span></h4><p>Fresh mozzarella, heirloom tomato, basil oil</p></div>
-      <div class="menu-item"><h4>Chilled Kai Noodle Salad <span>$11</span></h4><p>Sesame dressing, cucumber, scallion, cold noodles</p></div>
-    </div>
-  </div>
+  <div class="menu-section"><h3>Cold Appetizers</h3><div class="menu-grid">
+    <div class="menu-item"><h4>Frost Demon Ceviche <span>$13</span></h4><p>Citrus-cured white fish, red onion, cilantro</p></div>
+    <div class="menu-item"><h4>Ice Realm Caprese <span>$10</span></h4><p>Fresh mozzarella, heirloom tomato, basil oil</p></div>
+    <div class="menu-item"><h4>Chilled Kai Noodle Salad <span>$11</span></h4><p>Sesame dressing, cucumber, scallion, cold noodles</p></div>
+    <div class="menu-item"><h4>Zanzouken Tuna Tataki <span>$15</span></h4><p>Seared rare, citrus soy</p></div>
+    <div class="menu-item"><h4>Other World Citrus Salad <span>$10</span></h4><p>Mixed greens, orange, grapefruit, poppyseed dressing</p></div>
+    <div class="menu-item"><h4>Yardrat Cold Soba <span>$12</span></h4><p>Chilled soba noodles, soy-ginger dressing, scallion</p></div>
+    <div class="menu-item"><h4>Namekian Ocean Ceviche <span>$14</span></h4><p>Green-hued citrus marinade, fresh catch</p></div>
+    <div class="menu-item"><h4>Namekian Green Gazpacho <span>$9</span></h4><p>Chilled cucumber and herb soup, bright green</p></div>
+  </div></div>
 
-  <div class="menu-section">
-    <h3>Drinks</h3>
-    <div class="menu-grid">
-      <div class="menu-item"><h4>Kai's Supreme Fruit Juice <span>$6</span></h4><p>Fresh-pressed citrus and berry blend</p></div>
-      <div class="menu-item"><h4>Namekian Spring Water <span>$4</span></h4><p>Still or sparkling, served ice cold</p></div>
-      <div class="menu-item"><h4>Saiyan Power Smoothie <span>$8</span></h4><p>Banana, mango, protein blend</p></div>
-      <div class="menu-item"><h4>Capsule Corp Cola <span>$4</span></h4><p>Classic fountain cola, house-made</p></div>
-      <div class="menu-item"><h4>Whis' Iced Green Tea <span>$5</span></h4><p>Lightly sweetened, brewed fresh daily. A recipe contribution straight from Whis.</p></div>
-      <div class="menu-item"><h4>Kame House Lemonade <span>$5</span></h4><p>Fresh-squeezed, mint garnish</p></div>
-    </div>
-  </div>
+  <div class="menu-section"><h3>Drinks</h3><div class="menu-grid">
+    <div class="menu-item"><h4>Kai's Supreme Fruit Juice <span>$6</span></h4><p>Fresh-pressed citrus and berry blend</p></div>
+    <div class="menu-item"><h4>Namekian Spring Water <span>$4</span></h4><p>Still or sparkling, served ice cold</p></div>
+    <div class="menu-item"><h4>Saiyan Power Smoothie <span>$8</span></h4><p>Banana, mango, protein blend</p></div>
+    <div class="menu-item"><h4>Capsule Corp Cola <span>$4</span></h4><p>Classic fountain cola, house-made</p></div>
+    <div class="menu-item"><h4>Whis' Iced Green Tea <span>$5</span></h4><p>Lightly sweetened, brewed fresh daily. A recipe contribution straight from Whis.</p></div>
+    <div class="menu-item"><h4>Kame House Lemonade <span>$5</span></h4><p>Fresh-squeezed, mint garnish</p></div>
+    <div class="menu-item"><h4>Three-Sun Citrus Cooler <span>$6</span></h4><p>Triple-citrus blend</p></div>
+  </div></div>
+
+  <div class="menu-section"><h3>Pizza</h3><div class="menu-grid">
+    <div class="menu-item"><h4>Kai Kai Pizza <span>$19</span></h4><p>Four-corner pie, a different topping in each quarter</p></div>
+    <div class="menu-item"><h4>Flying Nimbus Margherita <span>$16</span></h4><p>San Marzano tomato, fresh mozzarella, basil</p></div>
+    <div class="menu-item"><h4>Snake Way Supreme <span>$21</span></h4><p>Pepperoni, sausage, peppers, onion</p></div>
+    <div class="menu-item"><h4>Hyperbolic Time Pie <span>$23</span></h4><p>Double-baked, extra long ferment dough</p></div>
+    <div class="menu-item"><h4>Snake Way Long Roll Pizza <span>$22</span></h4><p>An extra-long rolled pie, sliced down its length</p></div>
+    <div class="menu-item"><h4>King Kai's Planet Personal Pie <span>$14</span></h4><p>A tiny single-serve pizza, surprisingly heavy</p></div>
+    <div class="menu-item"><h4>Capsule Corp Compact Pizza <span>$10</span></h4><p>A small personal pie that feels bigger once out</p></div>
+  </div></div>
+
+  <div class="menu-section"><h3>Sacred World Specials</h3><div class="menu-grid">
+    <div class="menu-item"><h4>Kaiōshin Realm Tasting Plate <span>$45</span></h4><p>Chef's rotating selection, five courses</p></div>
+    <div class="menu-item"><h4>Shin-jin Golden Risotto <span>$28</span></h4><p>Saffron, gold leaf, aged parmesan</p></div>
+    <div class="menu-item"><h4>Tabbu-seijin Firecracker Wings <span>$14</span></h4><p>Double-fried, ghost pepper glaze</p></div>
+    <div class="menu-item"><h4>Kikōhō Sampler <span>$30</span></h4><p>Three chef's proteins on one plate, fired one after another</p></div>
+    <div class="menu-item"><h4>Tsufuru Heritage Roast <span>$40</span></h4><p>Slow-roasted whole cut, ancestral recipe, serves the table</p></div>
+    <div class="menu-item"><h4>Ano-yo'ichi Budōkai Platter <span>$42</span></h4><p>A tournament-sized sampler of the kitchen's strongest dishes</p></div>
+    <div class="menu-item"><h4>Porunga's Wish Noodles <span>$24</span></h4><p>Giant hand-pulled noodles, three broths in one bowl</p></div>
+    <div class="menu-item"><h4>Kami's Lookout Cloud Cake <span>$16</span></h4><p>Light whipped mousse, sits above everything else on the menu</p></div>
+    <div class="menu-item"><h4>Hyperbolic Slow-Roast <span>$38</span></h4><p>Twelve hours in the oven that taste like a year of patience</p></div>
+    <div class="menu-item"><h4>Three Suns Roast <span>$44</span></h4><p>Triple-seared crust, cooked from every angle at once</p></div>
+  </div></div>
+
+  <div class="menu-section"><h3>Desserts</h3><div class="menu-grid">
+    <div class="menu-item"><h4>Senzu Bean Tiramisu <span>$10</span></h4><p>Espresso-soaked ladyfingers, mascarpone, cocoa dust</p></div>
+    <div class="menu-item"><h4>Namekian Green Tea Cake <span>$9</span></h4><p>Matcha sponge, whipped cream, red bean</p></div>
+    <div class="menu-item"><h4>Potara Chocolate Fusion Cake <span>$11</span></h4><p>Dark and white chocolate layers, fused into one</p></div>
+    <div class="menu-item"><h4>Genki Dama Shared Sundae <span>$14</span></h4><p>A little from everyone, one massive shared bowl</p></div>
+    <div class="menu-item"><h4>Zanzoken Flash Sorbet <span>$8</span></h4><p>Palate-cleansing, gone as fast as it arrives</p></div>
+    <div class="menu-item"><h4>Grand Kai's Reward Parfait <span>$11</span></h4><p>Layered fruit and cream, worth the wait</p></div>
+  </div></div>
 </section>
 
 <section class="reviews" id="reviews">
   <h2>Reviews</h2>
-  <div class="review-summary">
-    <div class="score">4.8 ★</div>
-    <div class="count">Based on 1,000+ ratings</div>
-  </div>
+  <div class="review-summary"><div class="score">4.8 ★</div><div class="count">Based on 1,000+ ratings</div></div>
   <div class="r-grid">
 
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#f1faee; color:#0a0a0e;">V</div><div><div class="who">Videl</div><div class="stars-sm">★★★★★</div></div></div><p>"Brought my dad here and even he couldn't complain. The burger's honestly better than most fighters' technique."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#e07070;">J</div><div><div class="who">Janemba</div><div class="stars-sm">★★★★★</div></div></div><p>"GYAAH! HYA HYA HYA! *aggressively points at empty plate*"</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#8a7ee0;">F</div><div><div class="who">Frieza</div><div class="stars-sm">★★★★★</div></div></div><p>"I've dined across every corner of the universe. This is, disturbingly, one of the better meals I've had. I'll allow it to remain standing."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#a17ecb;">H</div><div><div class="who">Hit</div><div class="stars-sm">★★★★★</div></div></div><p>"Efficient service, precise cooking. I timed my meal down to the second. Flawless execution."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#e0a17e; color:#1a1218;">C</div><div><div class="who">Champa</div><div class="stars-sm">★★★☆☆</div></div></div><p>"Decent, but Vados could've made it better. Still ordered seconds though, don't tell Beerus."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#e0a04a; color:#1a1218;">T</div><div><div class="who">Tapion</div><div class="stars-sm">★★★★★</div></div></div><p>"Been through a lot of centuries, a lot of meals. This one's worth remembering. Even Hoi couldn't ruin the mood."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#7ea1c9;">C</div><div><div class="who">Cooler</div><div class="stars-sm">★★★★☆</div></div></div><p>"Refined, composed, nothing like the sloppy indulgence my brother would have made of this meal. A rare establishment that understands restraint."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#8ea16c; color:#1a1218;">S</div><div><div class="who">Saibaman</div><div class="stars-sm">★★★★☆</div></div></div><p>"SKREEE! GRAK GRAK SKREE!"</p><p class="translation">Translated by Nappa: "It says the appetizers were good, but it's annoyed it only gets one entrance before Vegeta blasts it."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#c96c6c;">B</div><div><div class="who">Bardock</div><div class="stars-sm">★★★★☆</div></div></div><p>"Reminds me of the meals Gine used to make before everything went south. Solid crew here. Don't tell them I said that, I've got my own place to run."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#8a8a94;">F</div><div><div class="who">Future Trunks</div><div class="stars-sm">★★★★★</div></div></div><p>"Quiet, unassuming place. Reminds me there are still worlds where you can sit down and just eat a meal without watching the door. I don't take that for granted."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#d9c25e; color:#1a1218;">C</div><div><div class="who">Chi-Chi</div><div class="stars-sm">★★★★★</div></div></div><p>"I've fed an army of fighters my whole life and I still don't get a night off cooking. Except here. Goten better appreciate this."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#5fa8a0,#5c94b0);">L</div><div><div class="who">Lapis</div><div class="stars-sm">★★★★☆</div></div></div><p>"Came for the fries, stayed because watching my sister actually enjoy something is rare entertainment. Worth the trip either way."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#d9c25e; color:#1a1218;">Z</div><div><div class="who">Zeno</div><div class="stars-sm">★★★★★</div></div></div><p>"Yummy! I want to come back here! Can we come back here?"</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#5fb894; color:#1a1218;">D</div><div><div class="who">Dende</div><div class="stars-sm">★★★★★</div></div></div><p>"I healed three fighters before dinner and this place still healed something in me too. The tea's a nice touch."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#a17ecb;">G</div><div><div class="who">Goten</div><div class="stars-sm">★★★★★</div></div></div><p>"Trunks wouldn't stop talking about the burgers so we snuck out here after training. Worth it. Don't tell our dads."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#8fa876;">Y</div><div><div class="who">Yajirobe</div><div class="stars-sm">★★★★★</div></div></div><p>"Didn't fight for it, didn't train for it, just showed up and ate. Best kind of meal there is. Reminded me of my steamed buns back home, almost."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#c98f5c; color:#1a1218;">Y</div><div><div class="who">Yamcha</div><div class="stars-sm">★★★★☆</div></div></div><p>"Ate here after a training session and I've gotta say, strongest meal on the menu, and coming from me that's a serious compliment."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#a37eb0;">U</div><div><div class="who">Uub</div><div class="stars-sm">★★★★★</div></div></div><p>"Goku said we should eat here after training. Didn't expect it to be this good. Wish I could bring some home for my family."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#8fa876; color:#1a1218;">G</div><div><div class="who">Grand Elder Guru</div><div class="stars-sm">★★★★★</div></div></div><p>"I have lived many centuries and tasted little of what this world offers outside my own village. This meal was a rare and welcome gift in my final years."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#6c8fc9;">K</div><div><div class="who">King Kai</div><div class="stars-sm">★★★★☆</div></div></div><p>"Traveled a long way from my tiny planet for this. Worth it, though Bubbles and Gregory ate most of my order before I got a bite in."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#7ba17e;">N</div><div><div class="who">Nail</div><div class="stars-sm">★★★★★</div></div></div><p>"Rarely leave the Grand Elder's side, but this was worth the trip. Quiet, respectful place, much like I try to be."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#5a9478;">Z</div><div><div class="who">Zamasu</div><div class="stars-sm">★★★☆☆</div></div></div><p>"A kai-run establishment, which explains the discipline in the kitchen. Still beneath the standard I'll one day impose on all creation, but tolerable."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#6c86a8;">B</div><div><div class="who">Bojack</div><div class="stars-sm">★★★★☆</div></div></div><p>"I've conquered galaxies with less effort than it took to finish this steak. Still, I'll admit defeat gracefully here: it was excellent."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#8a90a1;">G</div><div><div class="who">Garlic Jr.</div><div class="stars-sm">★★★★☆</div></div></div><p>"I am immortal, so I have eaten at every restaurant worth remembering across several lifetimes. This one, annoyingly, earned a permanent spot on the list."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#b06c6c;">T</div><div><div class="who">Turles</div><div class="stars-sm">★★★★☆</div></div></div><p>"Strength comes from what you consume, and this kitchen understands that better than most. Almost as satisfying as a fresh Tree of Might harvest."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#5c7fa1;">D</div><div><div class="who">Dr. Gero</div><div class="stars-sm">★★★★☆</div></div></div><p>"Built for one purpose: eliminate Goku. Somehow ended up eating here first. Even a killing machine needs decent fuel."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#4a8a8a;">B</div><div><div class="who">Broly</div><div class="stars-sm">★★★☆☆</div></div></div><p>"GRRAAAAHHH!"</p><p class="translation">Translated by Paragus: "He says the ribs were fine. I'd recommend not making any loud noises near him while he eats."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#6c8a6c;">L</div><div><div class="who">Lord Slug</div><div class="stars-sm">★★★★☆</div></div></div><p>"Traveled countless galaxies leaving destruction behind me. This meal, at least, gave me a reason to slow down and enjoy something for once."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#6c8fa8;">D</div><div><div class="who">Dr. Wheelo</div><div class="stars-sm">★★★☆☆</div></div></div><p>"A brain such as mine requires the finest nourishment. This came close. Though I'd still prefer Goku's body over another meal here."</p></div>
 
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#9d4edd; color:#fff;">C</div><div><div class="who">Cooler</div><div class="stars-sm">★★★★☆</div></div></div><p>"Adequate. The steak nearly rivals my own family's standards, which is the highest compliment I give out."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#d00000; color:#fff;">J</div><div><div class="who">Janemba</div><div class="stars-sm">★★★★★</div></div></div><p>"GYAAH! HYA HYA HYA! *aggressively points at empty plate*"</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#3a0ca3; color:#fff;">F</div><div><div class="who">Frieza</div><div class="stars-sm">★★★★★</div></div></div><p>"I've dined across every corner of the universe. This is, disturbingly, one of the better meals I've had. I'll allow it to remain standing."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#023e8a; color:#fff;">V</div><div><div class="who">Vegeta</div><div class="stars-sm">★★★★☆</div></div></div><p>"The portions are acceptable for a Saiyan appetite. The teriyaki salmon nearly impressed me. Nearly."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#5a2a83; color:#fff;">H</div><div><div class="who">Hit</div><div class="stars-sm">★★★★★</div></div></div><p>"Efficient service, precise cooking. I timed my meal down to the second. Flawless execution."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#e07a5f; color:#0a0a0e;">C</div><div><div class="who">Champa</div><div class="stars-sm">★★★☆☆</div></div></div><p>"Decent, but Vados could've made it better. Still ordered seconds though, don't tell Beerus."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#ff8500; color:#0a0a0e;">T</div><div><div class="who">Tapion</div><div class="stars-sm">★★★★★</div></div></div><p>"Been through a lot of centuries, a lot of meals. This one's worth remembering. Even Hoi couldn't ruin the mood."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#52796f; color:#fff;">P</div><div><div class="who">Perfect Cell</div><div class="stars-sm">★★★★★</div></div></div><p>"Absolute perfection. I've absorbed the finest cuisines this planet has to offer, and this ranks among the best."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#588157; color:#0a0a0e;">T</div><div><div class="who">Tien</div><div class="stars-sm">★★★★★</div></div></div><p>"Chiaotzu split the cold noodle salad with me. We agreed it's the best thing we've had since our last training retreat."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#52796f; color:#0a0a0e;">C</div><div><div class="who">Cell Junior</div><div class="stars-sm">★★★★★</div></div></div><p>"KIYAAH! GRAH GRAH!"</p><p class="translation">Translated by Perfect Cell: "He says the steak was cooked exactly how our cells would've wanted it."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#ff70a6; color:#0a0a0e;">K</div><div><div class="who">Kid Buu</div><div class="stars-sm">★★★★★</div></div></div><p>"BUU BUU HYA! GYEEE!"</p><p class="translation">Translated by Babidi: "He says he'd blow up the whole city if they ever stopped serving the pasta alla vodka."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#606c38; color:#0a0a0e;">S</div><div><div class="who">Saibaman</div><div class="stars-sm">★★★★☆</div></div></div><p>"SKREEE! GRAK GRAK SKREE!"</p><p class="translation">Translated by Nappa: "It says the appetizers were good, but it's annoyed it only gets one entrance before Vegeta blasts it."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#adb5bd; color:#0a0a0e;">W</div><div><div class="who">Whis</div><div class="stars-sm">★★★★★</div></div></div><p>"I've had meals prepared by angels across several universes. This ranks surprisingly high on that list. Even Lord Beerus agreed, and he never agrees with me on food."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#9d0208; color:#fff;">B</div><div><div class="who">Bardock</div><div class="stars-sm">★★★★☆</div></div></div><p>"Reminds me of the meals Gine used to make before everything went south. Solid crew here. Don't tell them I said that, I've got my own place to run."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#7209b7; color:#fff;">T</div><div><div class="who">Trunks</div><div class="stars-sm">★★★★★</div></div></div><p>"Mom dragged me here between training sessions. Didn't expect to like it this much. The burger's actually great."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:#ffd60a; color:#0a0a0e;">C</div><div><div class="who">Chi-Chi</div><div class="stars-sm">★★★★★</div></div></div><p>"Finally somewhere I don't have to cook for once. Goku would've written a review too, but well, you know."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#2a9d8f,#219ebc); color:#fff;">L</div><div><div class="who">Lapis</div><div class="stars-sm">★★★★☆</div></div></div><p>"Came for the fries, stayed for the steak. Would've given 5 stars but Lazuli says I'm too easy to please."</p></div>
-
-    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#ff70a6,#219ebc); color:#fff;">L</div><div><div class="who">Lazuli</div><div class="stars-sm">★★★★★</div></div></div><p>"Lapis exaggerates, this place actually earns the 5 stars. Cold appetizers were a nice surprise."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#9a94a1,#a17ecb);">W</div><div><div class="who">Whis & Beerus</div><div class="stars-sm">★★★★★</div></div></div><p>"Whis: A meal fit for a god, quite literally. Beerus: Don't let that go to your head, chef. It was good. Not planet-sparing good. But good."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#6c86a8,#c98a70);">V</div><div><div class="who">Vegeta & Bulma</div><div class="stars-sm">★★★★☆</div></div></div><p>"Vegeta: Acceptable. Bulma: Translation, he loved it and ordered seconds before I even finished my plate."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#c98f5c,#5c94b0);">K</div><div><div class="who">Krillin & Lazuli</div><div class="stars-sm">★★★★★</div></div></div><p>"Krillin: Marron's asleep, we finally got a quiet dinner out. Lazuli: First real meal out in months and it didn't disappoint. Worth the babysitter."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#8a7ea1,#c98a70);">Z</div><div><div class="who">Zarbon & Dodoria</div><div class="stars-sm">★★★☆☆</div></div></div><p>"Zarbon: Impeccably plated, elegant presentation, genuinely surprising for a place like this. Dodoria: I just wanted more meat. Stop being so fancy about it."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#e07ea8,#8a5cae);">K</div><div><div class="who">Kid Buu & Babidi</div><div class="stars-sm">★★★★☆</div></div></div><p>"BUU BUU HYA!"</p><p class="translation">Translated by Babidi: "He says it's good, though I only came along to make sure he didn't eat the other customers."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#7ea18f,#5fb894);">C</div><div><div class="who">Perfect Cell & Cell Junior</div><div class="stars-sm">★★★★★</div></div></div><p>"Perfect Cell: My offspring shares my exceptional taste, unsurprisingly. Cell Junior: KIYAAH! GRAH!"</p><p class="translation">Translated by Perfect Cell: "He agrees. Obviously."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#7ba17e,#8fb0c9);">T</div><div><div class="who">Tien & Chiaotzu</div><div class="stars-sm">★★★★★</div></div></div><p>"Tien: Quiet, well-balanced, exactly what we needed after training. Chiaotzu: I liked the noodle salad the best. Tien always lets me pick dessert."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#a17ecb,#d9c25e);">G</div><div><div class="who">Goten & Kid Trunks</div><div class="stars-sm">★★★★★</div></div></div><p>"Goten: Best burgers ever, no contest. Trunks: I finished mine faster though. Goten: Only because you stole half of mine first!"</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#6c8fc9,#c98f5c);">P</div><div><div class="who">Piccolo & Gohan</div><div class="stars-sm">★★★★★</div></div></div><p>"Piccolo: Came for Gohan, stayed because the food was better than expected. Gohan: Mr. Piccolo says that a lot but he always finishes his plate first."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#e07ea8,#e0708a);">B</div><div><div class="who">Fat Buu, Mr. Satan & Videl</div><div class="stars-sm">★★★★★</div></div></div><p>"Buu: BUU LOVE CAKE! Mr. Satan: He means it, he ordered three. Videl: Dad let him have all of them. I just watched in secondhand sugar shock."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#c98f5c,#9a94a1);">P</div><div><div class="who">Puar & Oolong</div><div class="stars-sm">★★★★☆</div></div></div><p>"Puar: Yamcha wouldn't stop talking about this place, so we finally came. Oolong: I mostly came for the fries, and I regret nothing."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:linear-gradient(135deg,#6c8fc9,#9a94a1);">P</div><div><div class="who">Emperor Pilaf, Mai & Shu</div><div class="stars-sm">★★★☆☆</div></div></div><p>"Pilaf: One day I'll rule the world, and this will be my official dining hall. Mai: He says that about every restaurant we visit, sir. Shu: The fries were good though."</p></div>
+    <div class="r-card"><div class="top"><div class="pfp" style="background:#4a8a8a;">H</div><div><div class="who">Hirudegarn</div><div class="stars-sm">★★★★☆</div></div></div><p>"RRRAAAGH!"</p><p class="translation">Translated by Tapion: "After a thousand years sealed inside me, this might be the first thing that's actually calmed him down. Small victories."</p></div>
 
   </div>
 </section>
